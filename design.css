@@ -1,0 +1,63 @@
+/* 🌌 Background */
+body {
+  min-height: 200vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  font-family: system-ui, sans-serif;
+  padding: 80px 40px;
+}
+
+/* Title */
+.title {
+  text-align: center;
+  margin-bottom: 120px;
+  font-size: 2.4rem;
+  letter-spacing: 1px;
+}
+
+/* Container */
+.projects {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+/* 🧊 GLASS CARD */
+.card {
+  width: 260px;
+  padding: 32px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    inset 0 0 0.5px rgba(255, 255, 255, 0.5);
+
+  text-align: center;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Hover glow */
+.card:hover {
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(0, 255, 255, 0.25);
+}
+
+/* Card text */
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+}
+
+.desc {
+  opacity: 0;
+  transform: translateY(10px);
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+}
