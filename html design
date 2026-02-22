@@ -1,0 +1,90 @@
+<h1 class="title">Indogulfwellness</h1>
+
+<section class="projects">
+  <div class="card magnetic">
+    <h3>ABOUT </h3>
+    <p class="desc">Establishing Peace and Harmony</p>
+  </div>
+<div class="card magnetic">
+    <h3>SERVICES</h3>
+    <p class="desc">Yoga|Swimming|Zumba|Aqua-Aerobics|Mindfulness</p>
+  </div>
+  <section class="projects">
+  <div class="card magnetic">
+    <h3>JOIN </h3>
+    <p class="desc">Internship|Jobs|Workshops</p>
+  </div>
+
+  <div class="card magnetic">
+    <h3>Explore More</h3>
+    <p class="desc">Private-Sessions|Certificates|</p>
+  </div>
+</section>
+
+<!-- GSAP -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<!-- ScrollTrigger plugin -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Scroll-triggered animation
+  gsap.from(".card", {
+    scrollTrigger: {
+      trigger: ".projects",
+      start: "top 80%",
+    },
+    y: 60,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.2,
+    ease: "power3.out"
+  });
+
+  // Magnetic + 3D tilt
+  const magnets = document.querySelectorAll(".magnetic");
+
+  magnets.forEach((magnet) => {
+    magnet.addEventListener("mousemove", (e) => {
+      const rect = magnet.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+
+      gsap.to(magnet, {
+        x: x * 0.3,
+        y: y * 0.3,
+        rotationX: -y / 12,
+        rotationY: x / 12,
+        transformPerspective: 600,
+        scale: 1.05,
+        duration: 0.3,
+        ease: "power3.out"
+      });
+    });
+
+    magnet.addEventListener("mouseenter", () => {
+      const desc = magnet.querySelector(".desc");
+      if (desc) {
+        gsap.to(desc, { opacity: 1, y: 0, duration: 0.3 });
+      }
+    });
+
+    magnet.addEventListener("mouseleave", () => {
+      gsap.to(magnet, {
+        x: 0,
+        y: 0,
+        rotationX: 0,
+        rotationY: 0,
+        scale: 1,
+        duration: 0.6,
+        ease: "elastic.out(1, 0.4)"
+      });
+
+      const desc = magnet.querySelector(".desc");
+      if (desc) {
+        gsap.to(desc, { opacity: 0, y: 10, duration: 0.3 });
+      }
+    });
+  });
+</script>
